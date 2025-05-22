@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import tflite_runtime.interpreter as tflite
+import tensorflow as tf
 from PIL import Image
 
 # Inject custom CSS for white background
@@ -15,7 +15,7 @@ st.markdown(page_bg_css, unsafe_allow_html=True)
 
 def homePage():
     def load_model(model_path):
-        interpreter = tflite.Interpreter(model_path=model_path)
+        interpreter = tf.lite.Interpreter(model_path=model_path)
         interpreter.allocate_tensors()
         return interpreter
 
