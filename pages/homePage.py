@@ -82,7 +82,7 @@ def homePage():
     interpreter = load_model(downloaded_model_path) 
 
 
-    st.title("Waste Type Detector")
+    st.markdown("<h1 style='text-align: center; color: black;'>Waste Type Detector</h1>", unsafe_allow_html=True)
 
     # Initiate session state
     if 'use_camera' not in st.session_state:
