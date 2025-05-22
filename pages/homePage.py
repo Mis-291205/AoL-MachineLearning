@@ -71,47 +71,16 @@ def homePage():
 
     # --- LOAD MODEL FROM HUGGING FACE HUB ---
     HF_REPO_ID = "migz117/Waste-VGG16"
-    MODEL_FILENAME = "model.tflite"
+    MODEL_FILENAME = "model.tflite" 
 
-    interpreter = None 
+    with st.spinner(f"Loading model '{MODEL_FILENAME}' from Hugging Face Hub..."):
+        downloaded_model_path = hf_hub_download(
+            repo_id=HF_REPO_ID,
+            filename=MODEL_FILENAME
+        )
+    
+    interpreter = load_model(downloaded_model_path) 
 
-    try:
-        with st.spinner(f"Loading model '{MODEL_FILENAME}' from Hugging Face Hub... (This may take a moment on the first run)"):
-            downloaded_model_path = hf_hub_download(
-                repo_id=HF_REPO_ID,
-                filename=MODEL_FILENAME
-            )
-        
-        interpreter = load_model(downloaded_model_path) 
-
-    except Exception as e:
-        st.error(f"An error occurred while trying to load the model from Hugging Face Hub: {e}")
-
-    try:
-        # Show a message while downloading/loading
-        with st.spinner(f"Loading model '{MODEL_FILENAME}' from Hugging Face Hub... (This may take a moment on the first run)"):
-            downloaded_model_path = hf_hub_download(
-                repo_id=HF_REPO_ID,
-                filename=MODEL_FILENAME
-                # Optional: specify a local cache directory if you prefer
-                # cache_dir="./my_hf_models_cache/"
-            )
-        
-        # Use your existing load_model function with the downloaded path
-        interpreter = load_model(downloaded_model_path) 
-
-        if interpreter:
-            st.success(f"Model '{MODEL_FILENAME}' loaded successfully from Hugging Face Hub.")
-        else:
-            # load_model would have printed an error if tf.lite.Interpreter failed.
-            # This is an additional check.
-            st.error("Failed to initialize TFLite interpreter after downloading model.")
-
-    except Exception as e:
-        st.error(f"An error occurred while trying to load the model from Hugging Face Hub: {e}")
-        st.error(f"Details: Repo ID='{HF_REPO_ID}', Filename='{MODEL_FILENAME}'.")
-        st.error("Please check internet connection, model name, and that 'huggingface-hub' is installed.")
-    # --- END OF MODEL LOADING ---
 
     st.title("Waste Type Detector")
 
