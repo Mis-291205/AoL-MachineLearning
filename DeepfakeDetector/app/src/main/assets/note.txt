@@ -1,0 +1,3 @@
+put the 'best_model.tflite' here
+
+download model from: https://huggingface.co/MichaelIvanS/VGG16-Deepfake/resolve/main/best_model.tflite
