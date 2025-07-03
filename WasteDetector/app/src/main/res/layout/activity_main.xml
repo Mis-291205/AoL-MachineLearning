@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/welcome"
+        android:contentDescription="Logo"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="Welcome to the Waste Detector"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:lineSpacingExtra="6dp"
+        android:text="In an age where sustainability and environmental awareness are more critical than ever, proper waste classification plays a vital role in preserving our planet. This application leverages artificial intelligence to help users easily identify whether waste is organic or recyclable, promoting better sorting habits and supporting eco-friendly practices."
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONTINUE"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        app:backgroundTint="#3F51B5"
+        app:cornerRadius="12dp" />
+</LinearLayout>
